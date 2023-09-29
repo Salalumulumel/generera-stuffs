@@ -3,6 +3,8 @@ import illnesshandler
 import illness_app_menu
 
 def main():
+
+    
     illness_handler = illnesshandler.IllnessHandler()
 
     while True:

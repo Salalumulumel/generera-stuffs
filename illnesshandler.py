@@ -24,13 +24,13 @@ class IllnessHandler:
         sqlite_insert_query = f"""INSERT INTO illnesses
                             (type, symptoms, treatment, medicine, support, financialaid)
                             VALUES
-                            ('{t_illness.type}', '{t_illness.symptoms}', '{t_illness.treatment}' '{t_illness.medicine}', '{t_illness.support}', '{t_illness.financialaid}') """
+                            ({t_illness.type}, {t_illness.symptoms}, {t_illness.treatment}, {t_illness.medicine}, {t_illness.support}, {t_illness.financialaid}) """
         
         
         
         count = cursor.execute(sqlite_insert_query)
         sqliteConnection.commit()
-        print("Record inserted successfully into SqliteDb_developers table", cursor.rowcount)
+        print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
         cursor.close()
 
 
@@ -40,7 +40,7 @@ class IllnessHandler:
             cursor = sqliteConnection.cursor()
 
 
-            sql_delete_query = f"""DELETE from illnesses where id = {int(t_id)}"""
+            sql_delete_query = f"""DELETE from illnesses where id = {input(t_id)}"""
             cursor.execute(sql_delete_query)
             sqliteConnection.commit()
             print(f"\tIllness with id {t_id} removed! ")
@@ -107,6 +107,9 @@ class IllnessHandler:
             
         return list_illnesses
     
+
+#-------------------------------------------------------------------------------------------
+
     def create_table(self):
         try:
             sqliteConnection = sqlite3.connect(self.db_name)
@@ -114,10 +117,10 @@ class IllnessHandler:
                                 id INTEGER PRIMARY KEY,
                                 type TEXT NOT NULL,
                                 symptoms TEXT,
-                                treatment INTEGER,
-                                Medicine INTEGER,
-                                support INTEGER,
-                                financial aid INTEGER,);'''
+                                treatment TEXT,
+                                Medicine TEXT,
+                                support TEXT,
+                                financial aid TEXT,);'''
             
             cursor = sqliteConnection.cursor()
             print("Successfully Connected to SqLite")

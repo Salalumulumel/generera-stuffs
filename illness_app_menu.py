@@ -19,10 +19,10 @@ def createIllness():
     print("\n----------------------------------")
     type = input("\n\tChoose type: ")
     symptoms = input("\n\tChoose symptoms: ")
-    treatment = int(input("\n\tChoose treatment: "))
-    medicine =int(input("\n\tChoose medicine: "))
-    support = int(input("\n\tChoose support: "))
-    financialaid = int(input("\n\tChoose financial aid: "))
+    treatment = input("\n\tChoose treatment: ")
+    medicine =input("\n\tChoose medicine: ")
+    support = input("\n\tChoose support: ")
+    financialaid = input("\n\tChoose financial aid: ")
 
     return illness.Illness(None, type, symptoms, treatment, medicine, support, financialaid)
 
